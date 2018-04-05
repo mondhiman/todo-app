@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<!-- <scope>runtime</scope> --> <!-- commented as compilation was failing due to runtime dependency -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
