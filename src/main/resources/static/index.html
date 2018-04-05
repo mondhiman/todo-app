@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dhiman's To-Do App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link href='./css/todo.css' rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="./js/todo.js"></script>
+
+</head>
+
+<body>
+
+	<div class="row container" ng-controller="todoController">
+		<div class="col-md-6">
+			<div class="form-group">
+				<h1>Dhiman's To-Do App</h1>
+				<form role="form">
+					<span class=""><input type="text" class="form-control input-sm" placeholder="Add new task here" name="task" ng-model="newtask"></span>
+					<span class=""><button type="button" class="btn btn-default btn-sm"><span title="add task" class="glyphicon glyphicon-plus" ng-click="addTask(newtask)"></span></button></span>
+				</form>
+				<span>
+			        <input type="checkbox" ng-model="filterDone" ng-change="toggleDone()"/>Display Completed Tasks
+			        <input type="checkbox" ng-model="filterNotDone" ng-change="toggleNotDone()">Display Pending Tasks</input>
+				</span>
+			</div>
+			<div class="table-responsive task-table">          
+		  		<table class="table">
+		   			<thead>
+				      <tr>
+				        <th>Completion Status</th>
+				        <th>Todo Item</th>
+				        <th>Actions</th>
+				      </tr>
+		    		</thead>
+		    		<tbody>
+		    			<tr ng-repeat="task in tasks | filter:filterTasks track by task.id" ng-controller="listController">
+							<td>
+							<span ng-show="!edit">
+								<a href="#">
+									<span title="mark not complete" ng-show="task.done" class="glyphicon glyphicon-check" ng-click="toogleDone(task)"></span>
+						        	<span  title="mark complete" ng-show="!task.done" class="glyphicon glyphicon-unchecked" ng-click="toogleDone(task)"></span>
+						        </a>
+							</span>
+							</td>
+							<td>
+							<span ng-show="edit">
+								<input type="text" ng-model="task.name" />
+							</span>
+							<span ng-show="!edit">
+								<span>{{task.name}}</span>
+							</span>
+							</td>
+							<td>
+							<span ng-show="edit">
+								<a href="#" ng-click="editTask(task); toggleEdit(this)">
+									<span title="update task" class="glyphicon glyphicon-check"></span>
+								</a>
+							</span>
+							<span ng-show="!edit">
+								<a href="#" ng-click="toggleEdit(this)">
+									<span title="edit task" class="glyphicon glyphicon-edit"></span>
+								</a>
+								<a href="#" ng-click="deleteTask($index, task)">
+						          <span title="remove task" class="glyphicon glyphicon-remove-circle"></span>
+						        </a>
+							</span>
+							</td>
+						</tr>
+		    		</tbody>
+		    	</table>
+		    </div>
+		</div>
+		
+	</div>
+</body>
+</html>
