@@ -1,4 +1,4 @@
-Download link : https://bitbucket.org/mondhiman/todo-app/downloads/todo-0.0.1-SNAPSHOT.zip
+Download link : https://github.com/mondhiman/todo-app/blob/package/todo-0.0.1-SNAPSHOT.jar
 Steps:
 1. Un-zip the downloaded file todo-0.0.1-SNAPSHOT.zip
 2. Double click on the file todo-0.0.1-SNAPSHOT.jar to start the application
